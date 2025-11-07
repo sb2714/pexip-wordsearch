@@ -22,6 +22,8 @@ requires python `import math`
 - maximising for runtime efficiency: perhaps use precomputation, assuming there will be many queries
 - again, does not support wrapping
 
+Have chosen base = 31 (> 26), modulus = 1e9 + 7
+
 Choice of modulus M results in probability of collision (failure) 1/M, can use multiple hashes with moduli M_1, ..., M_j
 for probability of failure (M_1 ... M_j)^-1
 
