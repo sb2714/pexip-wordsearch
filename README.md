@@ -11,7 +11,7 @@ and vertical (top to bottom) substring detection. Note this does not support wor
 1. word length between 4 and 20 (incl) characters
 2. large grids
 3. time complexity concerns
-4. no wrapping - though this can be included fairly easily
+4. **no wrapping** - though this can be included fairly easily
 5. top to bottom / left to right only
 
 ## Solution
@@ -22,7 +22,7 @@ and vertical (top to bottom) substring detection. Note this does not support wor
 Choice of modulus M results in probability of collision (failure) 1/M, can use multiple hashes with moduli M_1, ..., M_j
 for probability of failure (M_1 ... M_j)^-1
 
-In our solution we have kept j = 1, for simplicity, this may result in some collisions for especially large grids and words.
+**In our solution we have kept j = 1, for simplicity, this may result in some collisions for especially large grids and words.**
 
 ## Complexity
 Let n be the number of rows and l be the maximum word length (min(n, 20)). Then
