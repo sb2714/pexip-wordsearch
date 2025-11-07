@@ -10,6 +10,16 @@ some (negligible) cases (see Solution section).
 
 requires python `import math`
 
+## Usage
+
+```python
+from src.wordsearch import WordSearch
+
+ws = WordSearch(grid)
+for word in words_to_find:
+    if ws.is_present(word):
+    print(f"found {word}")
+```
 ## Assumptions
 1. word length between 4 and 20 (incl) characters
 2. large grids
