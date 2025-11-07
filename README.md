@@ -1,11 +1,14 @@
 # WordSearch - Pexip take home
 
 Python implementation of a WordSearch class supporting horizontal (left to right)
-and vertical (top to bottom) substring detection. Note this does not support word wrapping around edges.
+and vertical (top to bottom) word detection. Note this does not support word wrapping around edges and may fail in 
+some (negligible) cases (see Solution section).
 
 ## Structure
 - `src/wordsearch.py` - implementation
 - `src/tests` - 3 test cases / examples of usage
+
+requires python `import math`
 
 ## Assumptions
 1. word length between 4 and 20 (incl) characters

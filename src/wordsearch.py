@@ -6,7 +6,7 @@ key information:
 3. time/space complexity concerns
 4. no wrapping **UNSURE OF THIS MAYBE COME BACK TO THIS**
 5. top to bottom / left to right only
-6. no tricks - **WILL NOT PAY CARE TO INVALID INPUT CASES**
+6. no tricks - **WILL NOT PAY CARE TO EXTREME INVALID INPUT CASES**
 
 solution:
 - want to exploit bounds on word length: use hashing, prefix hashing ((polynomial in p) mod m, for m,p prime) in particular
@@ -14,11 +14,6 @@ solution:
 
 choice of modulus M results in probability of collision (failure) 1/M, can use multiple hashes with moduli M_1, ..., M_j
 for probability of failure (M_1 ... M_j)^-1
-
-multi core solution:
-
-----
-
 """
 import math
 
