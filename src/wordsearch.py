@@ -68,13 +68,12 @@ class WordSearch:
     @staticmethod
     def prefix_hash(s: str):
         """
-        pref[k] = hash(s[:k]) with pref[0]=0
-        then hash(s[i:i+l]) = (pref[i+l] - pref[i]*base^l) % modulus
+        pref[i] = hash of s[:i] (0 <= i <= len(s))
         """
         pref = [0] * (len(s) + 1)
-        for i, ch in enumerate(s, start=1):
-            x = ord(ch) - ord('a') + 1
-            pref[i] = (pref[i - 1] * base + x) % modulus
+        for i in range(len(s)):
+            x = ord(s[i]) - ord('a') + 1
+            pref[i + 1] = (pref[i] * base + x) % modulus
         return pref
 
     def precompute(self):
@@ -85,10 +84,7 @@ class WordSearch:
             for l in range(self.min_length, min(len(s), self.max_length) + 1):  # words of length l
                 hs = self.sets[l]  # hash set for words of length l
                 for i in range(0, len(s) - l + 1):
-                    if i == 0:
-                        new_hash = pref[l]
-                    else:
-                        new_hash = (pref[i + l] - pref[i] * self.powers[l]) % modulus
+                    new_hash = (pref[i + l] - pref[i] * self.powers[l]) % modulus
                     if new_hash < 0:
                         new_hash += modulus
                     hs.add(new_hash)
@@ -100,12 +96,10 @@ class WordSearch:
             for l in range(self.min_length, min(len(s), self.max_length) + 1):  # words of length l
                 hs = self.sets[l]  # hash set for words of length l
                 for i in range(0, len(s) - l + 1):  # i is start position of word
-                    if i == 0:
-                        new_hash = pref[l]
-                    else:
-                        new_hash = (pref[i + l] - pref[i] * self.powers[l]) % modulus
+                    new_hash = (pref[i + l] - pref[i] * self.powers[l]) % modulus
                     if new_hash < 0:
                         new_hash += modulus
+                    hs.add(new_hash)
                     hs.add(new_hash)
 
     def is_present(self, word: str) -> bool:
@@ -121,6 +115,6 @@ class WordSearch:
             if not ('a' <= i <= 'z'):  # only consider lowercase letters
                 return False
 
-        word_hash = self.prefix_hash(word)[-1]
+        word_hash = self.prefix_hash(word)[len(word)]
 
         return word_hash in self.sets[l]

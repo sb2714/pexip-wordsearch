@@ -11,19 +11,3 @@ ENV/
 
 # PyCharm
 .idea/
-*.iml
-
-# Distribution / packaging
-build/
-dist/
-*.egg-info/
-
-# pytest cache
-.pytest_cache/
-
-# VS Code
-.vscode/
-
-# OS
-.DS_Store
-Thumbs.db
